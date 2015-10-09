@@ -1,9 +1,12 @@
 package com.flightcompanion.flightlogbook.list;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.flightcompanion.flightlogbook.R;
 import com.flightcompanion.flightlogbook.model.FlightRecord;
 
 import java.util.ArrayList;
@@ -23,12 +26,13 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 
 	@Override
 	public FlightListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		return new ViewHolder(new TextView(parent.getContext()));
+		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.flight_card, parent, false);
+		return new ViewHolder(view);
 	}
 
 	@Override
 	public void onBindViewHolder(FlightListAdapter.ViewHolder holder, int position) {
-		holder.descriptionText.setText(flightRecords.get(position).getComment());
+		holder.infoText.setText(flightRecords.get(position).getComment());
 	}
 
 	@Override
@@ -37,11 +41,13 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
-		TextView descriptionText;
+		CardView cardView;
+		TextView infoText;
 
 		public ViewHolder(View view) {
 			super(view);
-			descriptionText = (TextView) view;
+			cardView = (CardView) view.findViewById(R.id.flight_card);
+			infoText = (TextView) view.findViewById(R.id.info_text);
 		}
 	}
 }
