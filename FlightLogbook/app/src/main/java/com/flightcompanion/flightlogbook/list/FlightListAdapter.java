@@ -32,7 +32,9 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 
 	@Override
 	public void onBindViewHolder(FlightListAdapter.ViewHolder holder, int position) {
-		holder.infoText.setText(flightRecords.get(position).getComment());
+		holder.dateField.setText(flightRecords.get(position).getDate().toString());
+		holder.planeInfo.setText(flightRecords.get(position).getPlane());
+		holder.performanceInfo.setText(String.valueOf(flightRecords.get(position).getDuration()));
 	}
 
 	@Override
@@ -42,12 +44,16 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		CardView cardView;
-		TextView infoText;
+		TextView dateField;
+		TextView planeInfo;
+		TextView performanceInfo;
 
 		public ViewHolder(View view) {
 			super(view);
 			cardView = (CardView) view.findViewById(R.id.flight_card);
-			infoText = (TextView) view.findViewById(R.id.info_text);
+			dateField = (TextView) view.findViewById(R.id.date_field);
+			planeInfo = (TextView) view.findViewById(R.id.plane_info);
+			performanceInfo = (TextView) view.findViewById(R.id.performance_field);
 		}
 	}
 }
