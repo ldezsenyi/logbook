@@ -19,21 +19,21 @@ public class SimpleDateView extends LinearLayout {
 
 	public SimpleDateView(Context context) {
 		super(context);
-		init(context, null);
+		init(null);
 	}
 
 	public SimpleDateView(Context context, AttributeSet attributes) {
 		super(context, attributes);
-		init(context, attributes);
+		init(attributes);
 	}
 
 	public SimpleDateView(Context context, AttributeSet attributes, int defStyleAttr) {
 		super(context, attributes, defStyleAttr);
-		init(context, attributes);
+		init(attributes);
 	}
 
-	public void init(Context context, AttributeSet attributes) {
-		LayoutInflater.from(context).inflate(R.layout.view_date, this);
+	public void init(AttributeSet attributes) {
+		LayoutInflater.from(getContext()).inflate(R.layout.view_date, this);
 
 		monthField = (TextView) findViewById(R.id.month_field);
 		yearField = (TextView) findViewById(R.id.year_field);
