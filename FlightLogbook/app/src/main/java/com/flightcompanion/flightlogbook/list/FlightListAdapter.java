@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.flightcompanion.flightlogbook.R;
 import com.flightcompanion.flightlogbook.model.FlightRecord;
+import com.flightcompanion.flightlogbook.view.PlaneDetailView;
 import com.flightcompanion.flightlogbook.view.SimpleDateView;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 	@Override
 	public void onBindViewHolder(FlightListAdapter.ViewHolder holder, int position) {
 		holder.dateField.setDate(flightRecords.get(position).getDate());
-		holder.planeInfo.setText(flightRecords.get(position).getPlane().getRegistrationMark());
+		holder.planeInfo.setPlane(flightRecords.get(position).getPlane());
 		holder.performanceInfo.setText(String.valueOf(flightRecords.get(position).getDuration()));
 	}
 
@@ -46,14 +47,14 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		CardView cardView;
 		SimpleDateView dateField;
-		TextView planeInfo;
+		PlaneDetailView planeInfo;
 		TextView performanceInfo;
 
 		public ViewHolder(View view) {
 			super(view);
 			cardView = (CardView) view.findViewById(R.id.flight_card);
 			dateField = (SimpleDateView) view.findViewById(R.id.date_field);
-			planeInfo = (TextView) view.findViewById(R.id.plane_info);
+			planeInfo = (PlaneDetailView) view.findViewById(R.id.plane_info);
 			performanceInfo = (TextView) view.findViewById(R.id.performance_field);
 		}
 	}

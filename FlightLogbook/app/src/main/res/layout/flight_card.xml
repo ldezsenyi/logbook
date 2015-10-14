@@ -33,18 +33,14 @@
 					android:layout_alignParentLeft="true"
 					android:layout_below="@+id/marker"/>
 
-			<LinearLayout
+			<com.flightcompanion.flightlogbook.view.PlaneDetailView
+					android:id="@+id/plane_info"
 					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+					android:layout_height="match_parent"
 					android:layout_toRightOf="@id/date_field"
 					android:layout_toLeftOf="@+id/performance_field"
-					android:orientation="vertical">
-
-				<TextView
-						android:id="@+id/plane_info"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"/>
-			</LinearLayout>
+					android:paddingLeft="5dp"
+					android:paddingRight="5dp"/>
 
 			<TextView
 					android:id="@+id/performance_field"
