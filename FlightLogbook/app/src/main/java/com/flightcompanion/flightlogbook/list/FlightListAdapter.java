@@ -33,8 +33,8 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 
 	@Override
 	public void onBindViewHolder(FlightListAdapter.ViewHolder holder, int position) {
-		holder.planeInfo.setText(flightRecords.get(position).getPlane());
 		holder.dateField.setDate(flightRecords.get(position).getDate());
+		holder.planeInfo.setText(flightRecords.get(position).getPlane().getRegistrationMark());
 		holder.performanceInfo.setText(String.valueOf(flightRecords.get(position).getDuration()));
 	}
 

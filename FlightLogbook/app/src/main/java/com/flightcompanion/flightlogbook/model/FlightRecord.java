@@ -6,12 +6,12 @@ public class FlightRecord {
 
 	private Date date;
 	private Long duration;
-	private String plane;
+	private Plane plane;
 	private String location;
 	private String task;
 	private String comment;
 
-	public FlightRecord(Date date, Long duration, String plane, String location, String task, String comment) {
+	public FlightRecord(Date date, Long duration, Plane plane, String location, String task, String comment) {
 		this.date = date;
 		this.duration = duration;
 		this.plane = plane;
@@ -28,7 +28,7 @@ public class FlightRecord {
 		return duration;
 	}
 
-	public String getPlane() {
+	public Plane getPlane() {
 		return plane;
 	}
 
@@ -47,12 +47,12 @@ public class FlightRecord {
 	public static class Builder {
 		private Date date = new Date();
 		private Long duration;
-		private String plane = "";
+		private Plane plane = new Plane("", "");
 		private String location = "";
 		private String task = "";
 		private String comment = "";
 
-		public Builder(Date date, String plane, long duration, String location) {
+		public Builder(Date date, Plane plane, long duration, String location) {
 			this.date = date;
 			this.plane = plane;
 			this.duration = duration;

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.flightcompanion.flightlogbook.R;
 import com.flightcompanion.flightlogbook.model.FlightRecord;
+import com.flightcompanion.flightlogbook.model.Plane;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,7 +55,7 @@ public class FlightListFragment extends Fragment {
 	private List<FlightRecord> createFakeFlightRecords() {
 		ArrayList<FlightRecord> flightRecords = new ArrayList<>();
 		for(int i = 0; i < 100; i++) {
-			FlightRecord record = new FlightRecord.Builder(new Date(), "Astir", 10, "LHJK").comment("Record item " + i).build();
+			FlightRecord record = new FlightRecord.Builder(new Date(), new Plane("HA-4256", "Astir"), 10, "LHJK").comment("Record item " + i).build();
 			flightRecords.add(record);
 		}
 		return flightRecords;
