@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.flightcompanion.flightlogbook.R;
 import com.flightcompanion.flightlogbook.model.FlightRecord;
+import com.flightcompanion.flightlogbook.view.SimpleDateView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,8 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 
 	@Override
 	public void onBindViewHolder(FlightListAdapter.ViewHolder holder, int position) {
-		holder.dateField.setText(flightRecords.get(position).getDate().toString());
 		holder.planeInfo.setText(flightRecords.get(position).getPlane());
+		holder.dateField.setDate(flightRecords.get(position).getDate());
 		holder.performanceInfo.setText(String.valueOf(flightRecords.get(position).getDuration()));
 	}
 
@@ -44,14 +45,14 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		CardView cardView;
-		TextView dateField;
+		SimpleDateView dateField;
 		TextView planeInfo;
 		TextView performanceInfo;
 
 		public ViewHolder(View view) {
 			super(view);
 			cardView = (CardView) view.findViewById(R.id.flight_card);
-			dateField = (TextView) view.findViewById(R.id.date_field);
+			dateField = (SimpleDateView) view.findViewById(R.id.date_field);
 			planeInfo = (TextView) view.findViewById(R.id.plane_info);
 			performanceInfo = (TextView) view.findViewById(R.id.performance_field);
 		}
