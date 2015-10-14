@@ -5,16 +5,18 @@ import java.util.Date;
 public class FlightRecord {
 
 	private Date date;
-	private Long duration;
 	private Plane plane;
+	private Long duration;
+	private int distance;
 	private String location;
 	private String task;
 	private String comment;
 
-	public FlightRecord(Date date, Long duration, Plane plane, String location, String task, String comment) {
+	public FlightRecord(Date date, Plane plane, Long duration, int distance, String location, String task, String comment) {
 		this.date = date;
-		this.duration = duration;
 		this.plane = plane;
+		this.duration = duration;
+		this.distance = distance;
 		this.location = location;
 		this.task = task;
 		this.comment = comment;
@@ -44,10 +46,15 @@ public class FlightRecord {
 		return comment;
 	}
 
+	public int getDistance() {
+		return distance;
+	}
+
 	public static class Builder {
 		private Date date = new Date();
-		private Long duration;
 		private Plane plane = new Plane("", "");
+		private Long duration;
+		private int distance;
 		private String location = "";
 		private String task = "";
 		private String comment = "";
@@ -57,6 +64,11 @@ public class FlightRecord {
 			this.plane = plane;
 			this.duration = duration;
 			this.location = location;
+		}
+
+		public Builder distance(int distance) {
+			this.distance = distance;
+			return this;
 		}
 
 		public Builder task(String task) {
@@ -70,7 +82,7 @@ public class FlightRecord {
 		}
 
 		public FlightRecord build() {
-			return new FlightRecord(date, duration, plane, location, task, comment);
+			return new FlightRecord(date, plane, duration, distance, location, task, comment);
 		}
 	}
 }
