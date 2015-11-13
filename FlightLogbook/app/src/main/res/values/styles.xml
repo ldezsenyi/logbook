@@ -10,4 +10,9 @@
 		<item name="android:textSize">12sp</item>
 	</style>
 
+	<style name="cardTextNormal">
+		<item name="android:textSize">12sp</item>
+		<item name="android:textColor">@color/lightGray</item>
+	</style>
+
 </resources>
