@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	<android.support.v7.widget.CardView
+			xmlns:card_view="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/flight_card"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="2dp"
+			card_view:cardCornerRadius="2dp">
+
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+			<LinearLayout
+					android:id="@+id/date_field"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+
+				<com.flightcompanion.flightlogbook.view.CornerMarkerView
+						xmlns:corner_marker="http://schemas.android.com/apk/res-auto"
+						android:id="@+id/marker"
+						android:layout_width="12dp"
+						android:layout_height="12dp"
+						corner_marker:markerColor="@color/red"/>
+
+				<com.flightcompanion.flightlogbook.view.SimpleDateView
+						android:id="@+id/date"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"/>
+			</LinearLayout>
+
+			<com.flightcompanion.flightlogbook.view.FlightDetailView
+					android:id="@+id/flight_details"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_toRightOf="@id/date_field"
+					android:layout_toLeftOf="@+id/plane_details"
+					android:layout_marginLeft="5dp"/>
+
+			<com.flightcompanion.flightlogbook.view.PlaneDetailView
+					android:id="@+id/plane_details"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_alignParentRight="true"
+					android:layout_alignParentEnd="true"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"/>
+
+		</RelativeLayout>
+	</android.support.v7.widget.CardView>
+</LinearLayout>

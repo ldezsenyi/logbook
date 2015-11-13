@@ -13,14 +13,27 @@ android {
     }
 
     buildTypes {
+        debug {
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError true
+        lintConfig file("${project.rootDir}/config/quality/lint.xml")
+        htmlReport true
+        htmlOutput file("$project.buildDir/reports/lint/lint.html")
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
     compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'com.android.support:cardview-v7:23.0.1'
 }
