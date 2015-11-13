@@ -29,7 +29,7 @@ public class PlaneDetailView extends RelativeLayout {
 	}
 
 	public void init() {
-		LayoutInflater.from(getContext()).inflate(R.layout.view_plane_detail, this);
+		LayoutInflater.from(getContext()).inflate(R.layout.view_plane_details, this);
 
 		registrationMarkField = (TextView) findViewById(R.id.registration_field);
 		typeField = (TextView) findViewById(R.id.type_field);

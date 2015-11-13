@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import com.flightcompanion.flightlogbook.R;
 import com.flightcompanion.flightlogbook.model.FlightRecord;
+import com.flightcompanion.flightlogbook.view.FlightDetailView;
 import com.flightcompanion.flightlogbook.view.PlaneDetailView;
 import com.flightcompanion.flightlogbook.view.SimpleDateView;
 
@@ -36,7 +36,13 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 	public void onBindViewHolder(FlightListAdapter.ViewHolder holder, int position) {
 		holder.dateField.setDate(flightRecords.get(position).getDate());
 		holder.planeInfo.setPlane(flightRecords.get(position).getPlane());
-		holder.performanceInfo.setText(String.valueOf(flightRecords.get(position).getDuration()));
+		holder.flightDetailView.setPerformanceParameters(
+			flightRecords.get(position).getDuration(),
+			flightRecords.get(position).getDistance(),
+			flightRecords.get(position).getMaxAltitude());
+		holder.flightDetailView.setRouteDetails(
+			flightRecords.get(position).getStartingAirfield(),
+			flightRecords.get(position).getDestination());
 	}
 
 	@Override
@@ -48,14 +54,14 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.Vi
 		CardView cardView;
 		SimpleDateView dateField;
 		PlaneDetailView planeInfo;
-		TextView performanceInfo;
+		FlightDetailView flightDetailView;
 
 		public ViewHolder(View view) {
 			super(view);
 			cardView = (CardView) view.findViewById(R.id.flight_card);
-			dateField = (SimpleDateView) view.findViewById(R.id.date_field);
-			planeInfo = (PlaneDetailView) view.findViewById(R.id.plane_info);
-			performanceInfo = (TextView) view.findViewById(R.id.performance_field);
+			dateField = (SimpleDateView) view.findViewById(R.id.date);
+			planeInfo = (PlaneDetailView) view.findViewById(R.id.plane_details);
+			flightDetailView = (FlightDetailView) view.findViewById(R.id.flight_details);
 		}
 	}
 }
