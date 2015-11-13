@@ -8,16 +8,21 @@ public class FlightRecord {
 	private Plane plane;
 	private Long duration;
 	private int distance;
-	private String location;
+	private int maxAltitude;
+	private AirField startingAirfield;
+	private AirField destination;
 	private String task;
 	private String comment;
 
-	public FlightRecord(Date date, Plane plane, Long duration, int distance, String location, String task, String comment) {
+	public FlightRecord(Date date, Plane plane, Long duration, int distance, int maxAltitude, AirField startingAirfiled,
+						AirField destination, String task, String comment) {
 		this.date = date;
 		this.plane = plane;
 		this.duration = duration;
 		this.distance = distance;
-		this.location = location;
+		this.maxAltitude = maxAltitude;
+		this.startingAirfield = startingAirfiled;
+		this.destination = destination;
 		this.task = task;
 		this.comment = comment;
 	}
@@ -26,16 +31,28 @@ public class FlightRecord {
 		return date;
 	}
 
-	public Long getDuration() {
-		return duration;
-	}
-
 	public Plane getPlane() {
 		return plane;
 	}
 
-	public String getLocation() {
-		return location;
+	public Long getDuration() {
+		return duration;
+	}
+
+	public int getDistance() {
+		return distance;
+	}
+
+	public int getMaxAltitude() {
+		return maxAltitude;
+	}
+
+	public AirField getStartingAirfield() {
+		return startingAirfield;
+	}
+
+	public AirField getDestination() {
+		return destination;
 	}
 
 	public String getTask() {
@@ -46,28 +63,40 @@ public class FlightRecord {
 		return comment;
 	}
 
-	public int getDistance() {
-		return distance;
-	}
-
 	public static class Builder {
 		private Date date = new Date();
 		private Plane plane = new Plane("", "");
 		private Long duration;
 		private int distance;
-		private String location = "";
+		private int maxAltitude;
+		private AirField startingAirfield = new AirField("");
+		private AirField destination = new AirField("");
 		private String task = "";
 		private String comment = "";
 
-		public Builder(Date date, Plane plane, long duration, String location) {
+		public Builder(Date date, Plane plane, long duration) {
 			this.date = date;
 			this.plane = plane;
 			this.duration = duration;
-			this.location = location;
 		}
 
 		public Builder distance(int distance) {
 			this.distance = distance;
+			return this;
+		}
+
+		public Builder maxAltitude(int maxAltitude) {
+			this.maxAltitude = maxAltitude;
+			return this;
+		}
+
+		public Builder startingAirField(AirField startingAirfield) {
+			this.startingAirfield = startingAirfield;
+			return this;
+		}
+
+		public Builder destination(AirField destination) {
+			this.destination = destination;
 			return this;
 		}
 
@@ -82,7 +111,7 @@ public class FlightRecord {
 		}
 
 		public FlightRecord build() {
-			return new FlightRecord(date, plane, duration, distance, location, task, comment);
+			return new FlightRecord(date, plane, duration, distance, maxAltitude, startingAirfield, destination, task, comment);
 		}
 	}
 }
